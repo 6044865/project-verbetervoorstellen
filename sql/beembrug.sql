@@ -1,7 +1,7 @@
 -- Database: beembrug
 CREATE DATABASE IF NOT EXISTS beembrug;
 USE beembrug;
- 
+
 -- Tabel: users
 CREATE TABLE IF NOT EXISTS users (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS users (
     wachtwoord VARCHAR(255) NOT NULL,
     rol ENUM('lid', 'admin') DEFAULT 'lid'
 );
- 
+
 -- Tabel: reservations
 CREATE TABLE IF NOT EXISTS reservations (
     id INT AUTO_INCREMENT PRIMARY KEY,
@@ -22,9 +22,9 @@ CREATE TABLE IF NOT EXISTS reservations (
     instructeur VARCHAR(100) DEFAULT NULL,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
- 
+
 -- wachtwoord voor beide gebruikers = welkom
- 
+
 INSERT INTO users (naam, email, wachtwoord, rol) VALUES
 (
     'Test Lid',
@@ -35,11 +35,11 @@ INSERT INTO users (naam, email, wachtwoord, rol) VALUES
 (
     'Beheerder',
     'admin@beembrug.nl',
+    -- '2y$10$YQHt6b2qKmy7eP74FZX0gOn1UhX4JwCrakFBKUkiGeYXmskpVZOV2',
     '$2y$10$V5iWYwNDnT0ygreLwu2azeSPFdBYQHK2Azmispyx5tBKOo4wnsZCG',
     'admin'
 );
---
- UPDATE users
-SET wachtwoord = '$2y$10$V5iWYwNDnT0ygreLwu2azeSPFdBYQHK2Azmispyx5tBKOo4wnsZCG'
- 
-WHERE email = 'lid@beembrug.nl';
+-- UPDATE users
+-- SET wachtwoord = '$2y$10$V5iWYwNDnT0ygreLwu2azeSPFdBYQHK2Azmispyx5tBKOo4wnsZCG'
+
+-- WHERE email = 'lid@beembrug.nl';
