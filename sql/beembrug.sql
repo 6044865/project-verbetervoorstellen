@@ -23,15 +23,17 @@ CREATE TABLE IF NOT EXISTS reservations (
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- wachtwoord voor beide gebruikers = welkom
+-- wachtwoord voor beide gebruikers = 123 in plaats van  welkom
 
 INSERT INTO users (naam, email, wachtwoord, rol) VALUES
 (
     'Test Lid',
     'lid@beembrug.nl',
-    '$2y$10$YQHt6b2qKmy7eP74FZX0gOn1UhX4JwCrakFBKUkiGeYXmskpVZOV2',
+    -- '$2y$10$YQHt6b2qKmy7eP74FZX0gOn1UhX4JwCrakFBKUkiGeYXmskpVZOV2',
+    '$2y$10$V5iWYwNDnT0ygreLwu2azeSPFdBYQHK2Azmispyx5tBKOo4wnsZCG',
     'lid'
 ),
+
 (
     'Beheerder',
     'admin@beembrug.nl',
@@ -39,7 +41,3 @@ INSERT INTO users (naam, email, wachtwoord, rol) VALUES
     '$2y$10$V5iWYwNDnT0ygreLwu2azeSPFdBYQHK2Azmispyx5tBKOo4wnsZCG',
     'admin'
 );
--- UPDATE users
--- SET wachtwoord = '$2y$10$V5iWYwNDnT0ygreLwu2azeSPFdBYQHK2Azmispyx5tBKOo4wnsZCG'
-
--- WHERE email = 'lid@beembrug.nl';
