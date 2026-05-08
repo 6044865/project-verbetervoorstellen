@@ -41,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ");
  
             $success = $stmt->execute([
+              
                 $naam,
                 $email,
                 $hashedPassword,
@@ -48,7 +49,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             ]);
  
             if ($success) {
-                $message = '<div class="alert alert-success">Registratie succesvol!</div>';
+                // $message = '<div class="alert alert-success">Registratie succesvol!</div>';
+            
+
+                // if ($rol === "admin") {
+                //     header("Location: ../admin.php");
+                // } else {
+                //     header("Location: ../reserveren.html");
+                // }
+                header("Location: ../reserveren.html");
+                exit;
                
             } else {
                 $message = '<div class="alert alert-danger">Er ging iets fout.</div>';
@@ -58,67 +68,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
  
 ?>
- 
-<!DOCTYPE html>
-<html lang="nl">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Registreren - BeemBrug Connect</title>
- 
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="css/style.css" />
-</head>
- 
-<body>
- 
-  <nav class="navbar navbar-dark">
-    <div class="container">
-      <a class="navbar-brand" href="index.html">BeemBrug Connect</a>
-    </div>
-  </nav>
- 
-  <div class="container mt-5">
- 
-    <h2 class="text-center">Account aanmaken</h2>
- 
-    <?php echo $message; ?>
- 
-    <form method="POST" id="registerForm">
- 
-      <div class="mb-3">
-        <label for="naam" class="form-label">Naam</label>
-        <input type="text" class="form-control" id="naam" name="naam" required />
-      </div>
- 
-      <div class="mb-3">
-        <label for="email" class="form-label">E-mailadres</label>
-        <input type="email" class="form-control" id="email" name="email" required />
-      </div>
- 
-      <div class="mb-3">
-        <label for="wachtwoord" class="form-label">Wachtwoord</label>
-        <input type="password" class="form-control" id="wachtwoord" name="wachtwoord" required />
-      </div>
- 
-      <div class="mb-3">
-        <label for="wachtwoord_herhaal" class="form-label">Herhaal wachtwoord</label>
-        <input type="password" class="form-control" id="wachtwoord_herhaal" name="wachtwoord_herhaal" required />
-      </div>
- 
-      <button type="submit" class="btn btn-primary w-100">
-        Registreren
-      </button>
- 
-    </form>
- 
-    <div class="text-center mt-3">
-      <a href="../login.html">Ik heb al een account</a>
-    </div>
- 
-  </div>
- 
-  <script src="js/scripts.js"></script>
- 
-</body>
-</html>
